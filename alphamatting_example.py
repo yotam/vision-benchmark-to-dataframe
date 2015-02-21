@@ -43,7 +43,7 @@ for h in soup.findAll(attrs={'class' : 'rank'}):
 
 # {'id' : 'errortable'} identifies the table - look at page source if this changes
 df = pd.read_html(str(soup), attrs={'id' : 'errortable'}, parse_dates=False)[0]
-df.rename(columns={i : c for i, c in enumerate(columns)}, inplace=True)
+df.rename(columns=dict(enumerate(columns)), inplace=True)
 
 # save to latex table
 with open('alphamatting_sad_table', 'w') as f:
